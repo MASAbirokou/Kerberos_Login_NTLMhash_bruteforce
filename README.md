@@ -68,5 +68,5 @@ if __name__ == '__main__':
 # note
 
 - please use this brutehash.py in the directory where `pyasn1` and `_crypto` are otherwise **PyAsn1Error** may happen.
-- even if a valid hash found, its bruteforce attack doesn't stop, so remove `print(nthash)` or watch carefully or ...
+- even if a valid hash found, its bruteforce attack doesn't stop, so remove `print(nthash)` in last for loop or watch carefully or ...
 
