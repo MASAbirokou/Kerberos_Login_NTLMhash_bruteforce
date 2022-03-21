@@ -17,7 +17,6 @@ from time import time, gmtime, strftime, strptime, localtime
 import hmac as HMAC
 from random import getrandbits, sample
 
-
 RC4_HMAC = 23
 NT_PRINCIPAL = 1
 NT_SRV_INST =2
@@ -43,8 +42,6 @@ def epoch2gt(epoch=None, microseconds=False):
         return (gt, ms)
     return gt
 
-
-
 def ntlm_hash(pwd):
     return MD4.new(pwd.encode('utf-16le'))
 
@@ -53,7 +50,6 @@ def _c(n, t):
 
 def _v(n, t):
     return t.clone(tagSet=t.tagSet + Tag(tagClassContext, tagFormatSimple, n), cloneValueFlag=True)
-
 
 def application(n):
     return Sequence.tagSet + Tag(tagClassApplication, tagFormatSimple, n)
@@ -79,12 +75,10 @@ class HostAddress(Sequence):
 class HostAddresses(SequenceOf):
     componentType = HostAddress()
 
-
 class PAData(Sequence):
     componentType = NamedTypes(
         NamedType('padata-type', _c(1, Integer())),
         NamedType('padata-value', _c(2, OctetString())))
-
     
 class KerberosFlags(BitString): pass
 
@@ -95,7 +89,6 @@ class EncryptedData(Sequence):
         NamedType('cipher', _c(2, OctetString())))
     
 class PaEncTimestamp(EncryptedData): pass
-
 
 class Ticket(Sequence):
     tagSet = application(1)
@@ -178,7 +171,6 @@ def build_pa_enc_timestamp(current_time, key):
 
     return pa_ts
 
-
 def build_as_req(target_realm, user_name, key, current_time, nonce):
 
     req_body = build_req_body(target_realm, 'krbtgt', target_realm, nonce, cname=user_name)
@@ -193,7 +185,6 @@ def build_as_req(target_realm, user_name, key, current_time, nonce):
     as_req['padata'][0] = None
     as_req['padata'][0]['padata-type'] = 2
     as_req['padata'][0]['padata-value'] = encode(pa_ts)
-
 
     as_req['req-body'] = _v(4, req_body)
 
@@ -231,8 +222,7 @@ def _decrypt_rep(data, key, spec, enc_spec, msg_type):
     rep_enc = decrypt(key[0], key[1], msg_type, rep_enc)
     rep_enc = decode(rep_enc, asn1Spec=enc_spec)[0]
     
-    return rep, rep_enc
-    
+    return rep, rep_enc  
 
 def passwordspray_tcp(user_realm, user_name, user_key, kdc_a, orgin_key):
 
