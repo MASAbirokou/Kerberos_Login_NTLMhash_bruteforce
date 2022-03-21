@@ -124,7 +124,6 @@ class PaEncTsEnc(Sequence):
         NamedType('patimestamp', _c(0, KerberosTime())),
         NamedType('pausec', _c(1, Microseconds())))
 
-
 class AsReq(KdcReq):
     tagSet = application(10)
 
@@ -193,9 +192,9 @@ def build_as_req(target_realm, user_name, key, current_time, nonce):
 def send_req_tcp(req, kdc, port=88):
     data = encode(req)
     data = pack('>I', len(data)) + data
-    #sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    # sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     sock = socket.socket(socket.AF_INET6, socket.SOCK_STREAM)
-    #sock.connect((kdc, port))
+    # sock.connect((kdc, port))
     sock.connect((kdc, port, 0, 0))
     sock.send(data)
     return sock
