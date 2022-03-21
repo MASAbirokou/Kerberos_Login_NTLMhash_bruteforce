@@ -63,4 +63,4 @@ if __name__ == '__main__':
 
 # note
 
-please use this brutehash.py in the same directory where `pyasn1` and `_crypto` are otherwise **PyAsn1Error** may happen.
+please use this brutehash.py in the directory where `pyasn1` and `_crypto` are otherwise **PyAsn1Error** may happen.
