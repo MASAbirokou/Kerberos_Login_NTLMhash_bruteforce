@@ -59,8 +59,14 @@ if __name__ == '__main__':
 ## other
 
 - I commentouted `from Crypto.Cipher import MD4, MD5` because of ImportError
-- I deleted parts regarding UDP
+- I deleted parts regarding UD
+
+### success example
+
+![brutesuccess](https://user-images.githubusercontent.com/85237728/159254302-2faddcae-b655-4d30-94da-22f1e7b0fc05.png)
 
 # note
 
-please use this brutehash.py in the directory where `pyasn1` and `_crypto` are otherwise **PyAsn1Error** may happen.
+- please use this brutehash.py in the directory where `pyasn1` and `_crypto` are otherwise **PyAsn1Error** may happen.
+- if a valid hash found, its bruteforce attack doesn't stop, so remove `print(nthash)` or watch carefully or ...
+
