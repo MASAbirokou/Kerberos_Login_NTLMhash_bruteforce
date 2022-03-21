@@ -60,3 +60,7 @@ if __name__ == '__main__':
 
 - I commentouted `from Crypto.Cipher import MD4, MD5` because of ImportError
 - I deleted parts regarding UDP
+
+# note
+
+please use brutehash.py in the same directory where `pyasn1` and `_crypto` are otherwise **PyAsn1Error** may happen.
