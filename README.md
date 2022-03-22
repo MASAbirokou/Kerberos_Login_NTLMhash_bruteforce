@@ -59,7 +59,7 @@ if __name__ == '__main__':
 ## other
 
 - I commentouted `from Crypto.Cipher import MD4, MD5` because of ImportError
-- I deleted parts regarding UD
+- I deleted parts regarding UDP
 
 ### success example
 
